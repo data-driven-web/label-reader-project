@@ -122,7 +122,14 @@ export default function UploadZone({ mode, onModeChange, onSingleFile, onBatchFi
         onDrop={onDrop}
         className={`min-h-[300px] border-2 border-dashed rounded-lg flex flex-col items-center justify-center gap-3 p-8 text-center ${
           dragging ? 'border-navy-600 bg-navy-50' : 'border-gray-400 bg-gray-50'}`}>
-        <span className="text-5xl" aria-hidden="true">🏷️</span>
+        {/* Plain document/upload glyph — institutional, no emoji. */}
+        <svg aria-hidden="true" width="56" height="56" viewBox="0 0 24 24" fill="none"
+          stroke="#1B3A6B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <path d="M14 2v6h6" />
+          <path d="M12 18v-6" />
+          <path d="m9 14 3-3 3 3" />
+        </svg>
         {mode === 'single' ? (
           <>
             <p className="text-lg text-gray-800 font-medium">Drag a label image here</p>

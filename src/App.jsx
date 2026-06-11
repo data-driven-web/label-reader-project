@@ -270,6 +270,7 @@ export default function App() {
           <div>
             <h1 className="text-xl font-semibold">TTB Label Verification Tool</h1>
             <p className="text-sm text-navy-100">Alcohol and Tobacco Tax and Trade Bureau — Label Review Prototype</p>
+            <p className="text-xs text-navy-100/70 mt-0.5">Oscar Hernandez — Treasury Assessment</p>
           </div>
           <button onClick={() => setDashboardOpen(true)}
             className="min-h-[44px] px-4 border border-navy-100/40 rounded text-base hover:bg-navy-600">
@@ -311,6 +312,53 @@ export default function App() {
         )}
 
         <ProgressStatus message={status} active={Boolean(status)} />
+
+        {/* How it works — fills the first-load empty space and orients new
+            users; hidden once a label or batch is on screen. */}
+        {((mode === 'single' && !previewUrl) || (mode === 'batch' && rows.length === 0)) && (
+          <section aria-label="How it works" className="mt-10">
+            <div className="grid sm:grid-cols-3 gap-6">
+              {[
+                {
+                  step: '1', title: 'Upload Label Image',
+                  text: 'Drag in a JPG, PNG, or PDF of the label — or a ZIP for a whole batch.',
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m7 9 5-5 5 5" /><path d="M12 4v12" />
+                    </svg>
+                  )
+                },
+                {
+                  step: '2', title: 'AI Reads All Zones',
+                  text: 'The label is scanned zone by zone in your browser — nothing is sent anywhere.',
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /><path d="M7 12h10" />
+                    </svg>
+                  )
+                },
+                {
+                  step: '3', title: 'Instant Risk Results',
+                  text: 'Every field is checked against TTB rules and flagged red, yellow, or green.',
+                  icon: (
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  )
+                }
+              ].map((item) => (
+                <div key={item.step} className="border border-gray-200 rounded-lg p-5 text-center">
+                  <div className="mx-auto w-12 h-12 rounded-full bg-navy-50 text-navy-700 flex items-center justify-center mb-3">
+                    {item.icon}
+                  </div>
+                  <p className="text-sm font-semibold text-gray-400 uppercase tracking-wide">Step {item.step}</p>
+                  <h3 className="text-base font-semibold text-navy-800 mt-1">{item.title}</h3>
+                  <p className="text-base text-gray-600 mt-1">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {mode === 'single' && previewUrl && (
           <div className="grid lg:grid-cols-2 gap-6 mt-6">
