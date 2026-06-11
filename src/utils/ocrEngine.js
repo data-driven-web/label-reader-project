@@ -100,8 +100,8 @@ function cropZone(img, zone) {
   const W = img.naturalWidth, H = img.naturalHeight;
   const sx = Math.round(W * zone.x);
   const sy = Math.round(H * zone.y);
-  const sw = Math.max(1, Math.round(W * zone.w));
-  const sh = Math.max(1, Math.round(H * zone.h));
+  const sw = Math.max(1, Math.round(W * zone.width));
+  const sh = Math.max(1, Math.round(H * zone.height));
   const scale = sw < 1000 ? 2 : 1;
   const canvas = document.createElement('canvas');
   canvas.width = sw * scale;
