@@ -1,0 +1,922 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-04-01",
+  "totalTemplates": 15,
+  "templates": [
+    {
+      "brandId": "jack-daniels-tn-whiskey",
+      "brandName": "JACK DANIEL'S",
+      "manufacturer": "Jack Daniel's Distillery",
+      "beverageType": "distilled_spirits",
+      "subcategory": "tennessee_whiskey",
+      "colorProfile": [
+        "#1a1a1a",
+        "#f5f0e8",
+        "#8b6914",
+        "#000000",
+        "#d4c9a8"
+      ],
+      "aspectRatio": 0.45,
+      "layoutDensity": 0.42,
+      "confidenceScore": 87,
+      "zones": {
+        "brandName": {
+          "x": 0.15,
+          "y": 0.08,
+          "width": 0.7,
+          "height": 0.22
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.3,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.2,
+          "y": 0.55,
+          "width": 0.6,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.3,
+          "y": 0.72,
+          "width": 0.4,
+          "height": 0.06
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.78,
+          "width": 0.8,
+          "height": 0.06
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.86,
+          "width": 0.96,
+          "height": 0.12
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "serif_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "bacardi-superior-rum",
+      "brandName": "BACARDI",
+      "manufacturer": "Bacardi U.S.A., Inc.",
+      "beverageType": "distilled_spirits",
+      "subcategory": "rum",
+      "colorProfile": [
+        "#ffffff",
+        "#c8102e",
+        "#1a1a1a",
+        "#d9d9d6",
+        "#f2a900"
+      ],
+      "aspectRatio": 0.55,
+      "layoutDensity": 0.28,
+      "confidenceScore": 85,
+      "zones": {
+        "brandName": {
+          "x": 0.15,
+          "y": 0.12,
+          "width": 0.7,
+          "height": 0.18
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.3,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.2,
+          "y": 0.55,
+          "width": 0.6,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.3,
+          "y": 0.72,
+          "width": 0.4,
+          "height": 0.06
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.78,
+          "width": 0.8,
+          "height": 0.06
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.86,
+          "width": 0.96,
+          "height": 0.12
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "sans_display_caps",
+        "bodyTextStyle": "sans_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "smirnoff-no21-vodka",
+      "brandName": "SMIRNOFF",
+      "manufacturer": "The Smirnoff Co.",
+      "beverageType": "distilled_spirits",
+      "subcategory": "vodka",
+      "colorProfile": [
+        "#c8102e",
+        "#ffffff",
+        "#b3b3b3",
+        "#1a1a1a",
+        "#e8e8e8"
+      ],
+      "aspectRatio": 0.5,
+      "layoutDensity": 0.33,
+      "confidenceScore": 84,
+      "zones": {
+        "brandName": {
+          "x": 0.15,
+          "y": 0.2,
+          "width": 0.7,
+          "height": 0.15
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.3,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.2,
+          "y": 0.55,
+          "width": 0.6,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.3,
+          "y": 0.72,
+          "width": 0.4,
+          "height": 0.06
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.78,
+          "width": 0.8,
+          "height": 0.06
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.86,
+          "width": 0.96,
+          "height": 0.12
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "sans_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "patron-silver-tequila",
+      "brandName": "PATRON",
+      "manufacturer": "The Patrón Spirits Company",
+      "beverageType": "distilled_spirits",
+      "subcategory": "blanco_tequila",
+      "colorProfile": [
+        "#f5f0e0",
+        "#3a5a40",
+        "#b0b0b0",
+        "#1a1a1a",
+        "#cdb380"
+      ],
+      "aspectRatio": 0.8,
+      "layoutDensity": 0.25,
+      "confidenceScore": 82,
+      "zones": {
+        "brandName": {
+          "x": 0.15,
+          "y": 0.15,
+          "width": 0.7,
+          "height": 0.2
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.3,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.2,
+          "y": 0.55,
+          "width": 0.6,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.3,
+          "y": 0.72,
+          "width": 0.4,
+          "height": 0.06
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.78,
+          "width": 0.8,
+          "height": 0.06
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.84,
+          "width": 0.96,
+          "height": 0.14
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "serif_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "tanqueray-london-dry-gin",
+      "brandName": "TANQUERAY",
+      "manufacturer": "Charles Tanqueray & Co.",
+      "beverageType": "distilled_spirits",
+      "subcategory": "london_dry_gin",
+      "colorProfile": [
+        "#0b6e4f",
+        "#ffffff",
+        "#c8102e",
+        "#d4af37",
+        "#1a1a1a"
+      ],
+      "aspectRatio": 0.5,
+      "layoutDensity": 0.35,
+      "confidenceScore": 83,
+      "zones": {
+        "brandName": {
+          "x": 0.15,
+          "y": 0.08,
+          "width": 0.7,
+          "height": 0.22
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.3,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.2,
+          "y": 0.55,
+          "width": 0.6,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.3,
+          "y": 0.72,
+          "width": 0.4,
+          "height": 0.06
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.78,
+          "width": 0.8,
+          "height": 0.06
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.86,
+          "width": 0.96,
+          "height": 0.12
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "serif_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "makers-mark-bourbon",
+      "brandName": "MAKER'S MARK",
+      "manufacturer": "Maker's Mark Distillery, Inc.",
+      "beverageType": "distilled_spirits",
+      "subcategory": "kentucky_straight_bourbon",
+      "colorProfile": [
+        "#f5f0e0",
+        "#b11226",
+        "#1a1a1a",
+        "#e8ddc8",
+        "#7a1020"
+      ],
+      "aspectRatio": 0.65,
+      "layoutDensity": 0.38,
+      "confidenceScore": 85,
+      "zones": {
+        "brandName": {
+          "x": 0.1,
+          "y": 0.08,
+          "width": 0.8,
+          "height": 0.22
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.3,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.2,
+          "y": 0.55,
+          "width": 0.6,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.3,
+          "y": 0.72,
+          "width": 0.4,
+          "height": 0.06
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.78,
+          "width": 0.8,
+          "height": 0.06
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.86,
+          "width": 0.96,
+          "height": 0.12
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_script_mixed",
+        "bodyTextStyle": "serif_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "yellowtail-cabernet",
+      "brandName": "YELLOW TAIL",
+      "manufacturer": "Casella Family Brands",
+      "beverageType": "wine",
+      "subcategory": "cabernet_sauvignon",
+      "colorProfile": [
+        "#1a1a1a",
+        "#f2c500",
+        "#ffffff",
+        "#7a1f3d",
+        "#3a3a3a"
+      ],
+      "aspectRatio": 0.85,
+      "layoutDensity": 0.3,
+      "confidenceScore": 84,
+      "zones": {
+        "brandName": {
+          "x": 0.1,
+          "y": 0.1,
+          "width": 0.8,
+          "height": 0.25
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.38,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.15,
+          "y": 0.58,
+          "width": 0.7,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.68,
+          "width": 0.4,
+          "height": 0.07
+        },
+        "producer": {
+          "x": 0.05,
+          "y": 0.68,
+          "width": 0.5,
+          "height": 0.1
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "sans_display_mixed",
+        "bodyTextStyle": "sans_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "barefoot-merlot",
+      "brandName": "BAREFOOT",
+      "manufacturer": "Barefoot Cellars",
+      "beverageType": "wine",
+      "subcategory": "merlot",
+      "colorProfile": [
+        "#f5efe0",
+        "#7a1f3d",
+        "#d4af37",
+        "#1a1a1a",
+        "#ffffff"
+      ],
+      "aspectRatio": 0.8,
+      "layoutDensity": 0.27,
+      "confidenceScore": 82,
+      "zones": {
+        "brandName": {
+          "x": 0.1,
+          "y": 0.1,
+          "width": 0.8,
+          "height": 0.25
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.38,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.15,
+          "y": 0.58,
+          "width": 0.7,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.68,
+          "width": 0.4,
+          "height": 0.07
+        },
+        "producer": {
+          "x": 0.05,
+          "y": 0.68,
+          "width": 0.5,
+          "height": 0.1
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "serif_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "josh-cellars-cabernet",
+      "brandName": "JOSH CELLARS",
+      "manufacturer": "Joseph Carr Wines",
+      "beverageType": "wine",
+      "subcategory": "cabernet_sauvignon",
+      "colorProfile": [
+        "#f5f0e8",
+        "#1b3a6b",
+        "#8b0000",
+        "#d9d2c4",
+        "#1a1a1a"
+      ],
+      "aspectRatio": 0.75,
+      "layoutDensity": 0.24,
+      "confidenceScore": 81,
+      "zones": {
+        "brandName": {
+          "x": 0.1,
+          "y": 0.15,
+          "width": 0.8,
+          "height": 0.2
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.38,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.15,
+          "y": 0.58,
+          "width": 0.7,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.68,
+          "width": 0.4,
+          "height": 0.07
+        },
+        "producer": {
+          "x": 0.05,
+          "y": 0.68,
+          "width": 0.5,
+          "height": 0.1
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "serif_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "kim-crawford-sauv-blanc",
+      "brandName": "KIM CRAWFORD",
+      "manufacturer": "Kim Crawford Wines",
+      "beverageType": "wine",
+      "subcategory": "sauvignon_blanc",
+      "colorProfile": [
+        "#ffffff",
+        "#1a1a1a",
+        "#b8b8b8",
+        "#e8e8e8",
+        "#5a5a5a"
+      ],
+      "aspectRatio": 0.7,
+      "layoutDensity": 0.22,
+      "confidenceScore": 83,
+      "zones": {
+        "brandName": {
+          "x": 0.1,
+          "y": 0.1,
+          "width": 0.8,
+          "height": 0.25
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.38,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.15,
+          "y": 0.58,
+          "width": 0.7,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.68,
+          "width": 0.4,
+          "height": 0.07
+        },
+        "producer": {
+          "x": 0.05,
+          "y": 0.68,
+          "width": 0.5,
+          "height": 0.1
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "sans_display_caps",
+        "bodyTextStyle": "sans_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "kendall-jackson-chardonnay",
+      "brandName": "KENDALL-JACKSON",
+      "manufacturer": "Kendall-Jackson Wine Estates",
+      "beverageType": "wine",
+      "subcategory": "chardonnay",
+      "colorProfile": [
+        "#f5efe0",
+        "#d4af37",
+        "#7a1f3d",
+        "#1a1a1a",
+        "#e8ddc8"
+      ],
+      "aspectRatio": 0.8,
+      "layoutDensity": 0.29,
+      "confidenceScore": 82,
+      "zones": {
+        "brandName": {
+          "x": 0.1,
+          "y": 0.1,
+          "width": 0.8,
+          "height": 0.25
+        },
+        "classType": {
+          "x": 0.1,
+          "y": 0.38,
+          "width": 0.8,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.15,
+          "y": 0.58,
+          "width": 0.7,
+          "height": 0.08
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.68,
+          "width": 0.4,
+          "height": 0.07
+        },
+        "producer": {
+          "x": 0.05,
+          "y": 0.68,
+          "width": 0.5,
+          "height": 0.1
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "serif_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "budweiser-american-lager",
+      "brandName": "BUDWEISER",
+      "manufacturer": "Anheuser-Busch, Inc.",
+      "beverageType": "beer",
+      "subcategory": "american_lager",
+      "colorProfile": [
+        "#c8102e",
+        "#ffffff",
+        "#1a1a1a",
+        "#d4af37",
+        "#e8e8e8"
+      ],
+      "aspectRatio": 1.4,
+      "layoutDensity": 0.36,
+      "confidenceScore": 86,
+      "zones": {
+        "brandName": {
+          "x": 0.2,
+          "y": 0.1,
+          "width": 0.6,
+          "height": 0.3
+        },
+        "classType": {
+          "x": 0.2,
+          "y": 0.42,
+          "width": 0.6,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.05,
+          "y": 0.6,
+          "width": 0.45,
+          "height": 0.1
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.6,
+          "width": 0.4,
+          "height": 0.1
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.72,
+          "width": 0.8,
+          "height": 0.08
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "script_display_mixed",
+        "bodyTextStyle": "sans_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "corona-extra",
+      "brandName": "CORONA EXTRA",
+      "manufacturer": "Cervecería Modelo",
+      "beverageType": "beer",
+      "subcategory": "american_lager",
+      "colorProfile": [
+        "#ffffff",
+        "#005baa",
+        "#f2c500",
+        "#1a1a1a",
+        "#7ec0ee"
+      ],
+      "aspectRatio": 1.2,
+      "layoutDensity": 0.3,
+      "confidenceScore": 84,
+      "zones": {
+        "brandName": {
+          "x": 0.2,
+          "y": 0.1,
+          "width": 0.6,
+          "height": 0.3
+        },
+        "classType": {
+          "x": 0.2,
+          "y": 0.42,
+          "width": 0.6,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.05,
+          "y": 0.6,
+          "width": 0.45,
+          "height": 0.1
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.6,
+          "width": 0.4,
+          "height": 0.1
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.72,
+          "width": 0.8,
+          "height": 0.08
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "sans_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "samuel-adams-boston-lager",
+      "brandName": "SAMUEL ADAMS",
+      "manufacturer": "Boston Beer Company",
+      "beverageType": "beer",
+      "subcategory": "amber_lager",
+      "colorProfile": [
+        "#003b70",
+        "#f5efe0",
+        "#c8102e",
+        "#d4af37",
+        "#1a1a1a"
+      ],
+      "aspectRatio": 1.1,
+      "layoutDensity": 0.4,
+      "confidenceScore": 85,
+      "zones": {
+        "brandName": {
+          "x": 0.2,
+          "y": 0.1,
+          "width": 0.6,
+          "height": 0.3
+        },
+        "classType": {
+          "x": 0.2,
+          "y": 0.42,
+          "width": 0.6,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.05,
+          "y": 0.6,
+          "width": 0.45,
+          "height": 0.1
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.6,
+          "width": 0.4,
+          "height": 0.1
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.72,
+          "width": 0.8,
+          "height": 0.08
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "serif_display_caps",
+        "bodyTextStyle": "serif_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    },
+    {
+      "brandId": "heineken-lager",
+      "brandName": "HEINEKEN",
+      "manufacturer": "Heineken Brouwerijen B.V.",
+      "beverageType": "beer",
+      "subcategory": "pilsner",
+      "colorProfile": [
+        "#008200",
+        "#ffffff",
+        "#c8102e",
+        "#1a1a1a",
+        "#d4af37"
+      ],
+      "aspectRatio": 1.3,
+      "layoutDensity": 0.32,
+      "confidenceScore": 84,
+      "zones": {
+        "brandName": {
+          "x": 0.2,
+          "y": 0.1,
+          "width": 0.6,
+          "height": 0.3
+        },
+        "classType": {
+          "x": 0.2,
+          "y": 0.42,
+          "width": 0.6,
+          "height": 0.12
+        },
+        "abv": {
+          "x": 0.05,
+          "y": 0.6,
+          "width": 0.45,
+          "height": 0.1
+        },
+        "netContents": {
+          "x": 0.55,
+          "y": 0.6,
+          "width": 0.4,
+          "height": 0.1
+        },
+        "producer": {
+          "x": 0.1,
+          "y": 0.72,
+          "width": 0.8,
+          "height": 0.08
+        },
+        "governmentWarning": {
+          "x": 0.02,
+          "y": 0.82,
+          "width": 0.96,
+          "height": 0.16
+        }
+      },
+      "typographySignature": {
+        "brandNameStyle": "sans_display_caps",
+        "bodyTextStyle": "sans_mixed",
+        "warningTextStyle": "sans_small_caps"
+      },
+      "approvedCOLA": "documented in TTB registry"
+    }
+  ]
+}

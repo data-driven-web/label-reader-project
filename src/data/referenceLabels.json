@@ -1,3 +1,448 @@
 {
-  "labels": []
+  "version": "2.0",
+  "totalLabels": 17,
+  "labels": [
+    {
+      "filename": "label-01-spirits-clean.png",
+      "source": "synthetic",
+      "category": "clean_pass",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "OLD TOM DISTILLERY",
+        "classType": "Bourbon Whiskey",
+        "abv": 45,
+        "netContents": "750 mL",
+        "producer": "Distilled by Old Tom Distillery, Louisville, KY",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "green",
+      "notes": "All fields correct; baseline distilled spirits pass.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-02-wine-clean.png",
+      "source": "synthetic",
+      "category": "clean_pass",
+      "beverageType": "wine",
+      "application": {
+        "brandName": "SILVER RIDGE CELLARS",
+        "classType": "Cabernet Sauvignon",
+        "abv": 13.5,
+        "netContents": "750 mL",
+        "producer": "Produced by Silver Ridge Cellars, Napa, CA",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "green",
+      "notes": "All fields correct; wine pass.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-03-beer-clean.png",
+      "source": "synthetic",
+      "category": "clean_pass",
+      "beverageType": "beer",
+      "application": {
+        "brandName": "COPPER RIDGE BREWING CO",
+        "classType": "American Lager",
+        "abv": 5,
+        "netContents": "12 fl oz",
+        "producer": "Brewed by Copper Ridge Brewing Co, Denver, CO",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "green",
+      "notes": "ABV present though optional for beer; all green.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-04-warning-titlecase.png",
+      "source": "synthetic",
+      "category": "warning_violation",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "OLD TOM DISTILLERY",
+        "classType": "Bourbon Whiskey",
+        "abv": 45,
+        "netContents": "750 mL",
+        "producer": "Distilled by Old Tom Distillery, Louisville, KY",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "red"
+      },
+      "expectedRisk": "red",
+      "notes": "Government Warning in title case — 27 CFR 16.21 requires ALL CAPS.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-05-abv-mismatch.png",
+      "source": "synthetic",
+      "category": "abv_mismatch",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "OLD TOM DISTILLERY",
+        "classType": "Bourbon Whiskey",
+        "abv": 45,
+        "netContents": "750 mL",
+        "producer": "Distilled by Old Tom Distillery, Louisville, KY",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "red",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "red",
+      "notes": "Label reads 47%, application says 45% — beyond ±0.3 tolerance.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-06-brand-nearmatch.png",
+      "source": "synthetic",
+      "category": "brand_near_match",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "STONE'S THROW DISTILLERY",
+        "classType": "Bourbon Whiskey",
+        "abv": 45,
+        "netContents": "750 mL",
+        "producer": "Distilled by Old Tom Distillery, Louisville, KY",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "yellow",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "yellow",
+      "notes": "Label \"STONES THROW DISTILLERY\" vs application with apostrophe — 75-92% similarity.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-07-missing-netcontents.png",
+      "source": "synthetic",
+      "category": "missing_field",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "OLD TOM DISTILLERY",
+        "classType": "Bourbon Whiskey",
+        "abv": 45,
+        "netContents": "750 mL",
+        "producer": "Distilled by Old Tom Distillery, Louisville, KY",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "red",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "red",
+      "notes": "Net contents absent — required field for distilled spirits.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-08-low-quality.png",
+      "source": "synthetic",
+      "category": "low_confidence",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "OLD TOM DISTILLERY",
+        "classType": "Bourbon Whiskey",
+        "abv": 45,
+        "netContents": "750 mL",
+        "producer": "Distilled by Old Tom Distillery, Louisville, KY",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "yellow",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "yellow"
+      },
+      "expectedRisk": "yellow",
+      "notes": "Degraded low-contrast image — yellow confidence flags expected.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-jd-clean.png",
+      "source": "ttb_cola_registry",
+      "category": "clean_pass",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "JACK DANIEL'S",
+        "classType": "Tennessee Whiskey",
+        "abv": 40,
+        "netContents": "750 mL",
+        "producer": "Distilled by Jack Daniel Distillery, Lynchburg, TN",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "green",
+      "notes": "Unmodified Jack Daniel's Old No. 7.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-yt-clean.png",
+      "source": "ttb_cola_registry",
+      "category": "clean_pass",
+      "beverageType": "wine",
+      "application": {
+        "brandName": "YELLOW TAIL",
+        "classType": "Cabernet Sauvignon",
+        "abv": 13.5,
+        "netContents": "750 mL",
+        "producer": "Produced by Casella Family Brands",
+        "countryOfOrigin": "Australia"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "green",
+      "notes": "Unmodified Yellowtail Cabernet.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-sa-clean.png",
+      "source": "ttb_cola_registry",
+      "category": "clean_pass",
+      "beverageType": "beer",
+      "application": {
+        "brandName": "SAMUEL ADAMS",
+        "classType": "American Lager",
+        "abv": 5,
+        "netContents": "12 fl oz",
+        "producer": "Brewed by Boston Beer Company",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "green",
+      "notes": "Unmodified Samuel Adams Boston Lager.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-jd-warning-titlecase.png",
+      "source": "ttb_cola_registry_modified",
+      "category": "warning_violation",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "JACK DANIEL'S",
+        "classType": "Tennessee Whiskey",
+        "abv": 40,
+        "netContents": "750 mL",
+        "producer": "Distilled by Jack Daniel Distillery, Lynchburg, TN",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "red"
+      },
+      "expectedRisk": "red",
+      "notes": "Government Warning edited to title case.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-jd-warning-missing.png",
+      "source": "ttb_cola_registry_modified",
+      "category": "warning_violation",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "JACK DANIEL'S",
+        "classType": "Tennessee Whiskey",
+        "abv": 40,
+        "netContents": "750 mL",
+        "producer": "Distilled by Jack Daniel Distillery, Lynchburg, TN",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "red"
+      },
+      "expectedRisk": "red",
+      "notes": "Government Warning removed entirely — Tier 1 anchor red flag.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-jd-abv-mismatch.png",
+      "source": "ttb_cola_registry_modified",
+      "category": "abv_mismatch",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "JACK DANIEL'S",
+        "classType": "Tennessee Whiskey",
+        "abv": 40,
+        "netContents": "750 mL",
+        "producer": "Distilled by Jack Daniel Distillery, Lynchburg, TN",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "red",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "red",
+      "notes": "ABV edited to 47% vs application 40% — beyond tolerance.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-jd-abv-tolerance.png",
+      "source": "ttb_cola_registry_modified",
+      "category": "abv_within_tolerance",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "JACK DANIEL'S",
+        "classType": "Tennessee Whiskey",
+        "abv": 45,
+        "netContents": "750 mL",
+        "producer": "Distilled by Jack Daniel Distillery, Lynchburg, TN",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "yellow",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "yellow",
+      "notes": "ABV edited to 45.2% vs application 45% — within ±0.3, not exact: yellow.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-jd-brand-nearmatch.png",
+      "source": "ttb_cola_registry_modified",
+      "category": "brand_near_match",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "JACK DANIEL'S",
+        "classType": "Tennessee Whiskey",
+        "abv": 40,
+        "netContents": "750 mL",
+        "producer": "Distilled by Jack Daniel Distillery, Lynchburg, TN",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "yellow",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "pass",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "yellow",
+      "notes": "Brand edited to JACK DANIELS (no apostrophe) — near-match yellow.",
+      "actualResult": null,
+      "passFail": null
+    },
+    {
+      "filename": "label-jd-missing-netcontents.png",
+      "source": "ttb_cola_registry_modified",
+      "category": "missing_field",
+      "beverageType": "distilled_spirits",
+      "application": {
+        "brandName": "JACK DANIEL'S",
+        "classType": "Tennessee Whiskey",
+        "abv": 40,
+        "netContents": "750 mL",
+        "producer": "Distilled by Jack Daniel Distillery, Lynchburg, TN",
+        "countryOfOrigin": "USA"
+      },
+      "expectedFields": {
+        "brandName": "pass",
+        "classType": "pass",
+        "abv": "pass",
+        "netContents": "red",
+        "producer": "pass",
+        "governmentWarning": "pass"
+      },
+      "expectedRisk": "red",
+      "notes": "Net contents removed — required field red flag.",
+      "actualResult": null,
+      "passFail": null
+    }
+  ]
 }
