@@ -25,8 +25,24 @@
       },
       "expectedRisk": "green",
       "notes": "All fields correct; baseline distilled spirits pass.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "green",
+        "counts": {
+          "red": 0,
+          "yellow": 0,
+          "green": 6
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-02-wine-clean.png",
@@ -51,8 +67,24 @@
       },
       "expectedRisk": "green",
       "notes": "All fields correct; wine pass.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "green",
+        "counts": {
+          "red": 0,
+          "yellow": 0,
+          "green": 6
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-03-beer-clean.png",
@@ -77,8 +109,24 @@
       },
       "expectedRisk": "green",
       "notes": "ABV present though optional for beer; all green.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "green",
+        "counts": {
+          "red": 0,
+          "yellow": 0,
+          "green": 6
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-04-warning-titlecase.png",
@@ -103,8 +151,24 @@
       },
       "expectedRisk": "red",
       "notes": "Government Warning in title case — 27 CFR 16.21 requires ALL CAPS.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "red",
+        "counts": {
+          "red": 1,
+          "yellow": 0,
+          "green": 5
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "red",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-05-abv-mismatch.png",
@@ -129,8 +193,24 @@
       },
       "expectedRisk": "red",
       "notes": "Label reads 47%, application says 45% — beyond ±0.3 tolerance.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "red",
+        "counts": {
+          "red": 1,
+          "yellow": 0,
+          "green": 5
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "red",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-06-brand-nearmatch.png",
@@ -155,8 +235,24 @@
       },
       "expectedRisk": "yellow",
       "notes": "Label \"STONES THROW DISTILLERY\" vs application with apostrophe — 75-92% similarity.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "yellow",
+        "counts": {
+          "red": 0,
+          "yellow": 1,
+          "green": 5
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "yellow",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-07-missing-netcontents.png",
@@ -181,8 +277,24 @@
       },
       "expectedRisk": "red",
       "notes": "Net contents absent — required field for distilled spirits.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "red",
+        "counts": {
+          "red": 1,
+          "yellow": 0,
+          "green": 5
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "netContents": "red",
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-08-low-quality.png",
@@ -207,8 +319,24 @@
       },
       "expectedRisk": "yellow",
       "notes": "Degraded low-contrast image — yellow confidence flags expected.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "yellow",
+        "counts": {
+          "red": 0,
+          "yellow": 1,
+          "green": 6
+        },
+        "overallConfidence": 87,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "yellow"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-jd-clean.png",
@@ -233,8 +361,24 @@
       },
       "expectedRisk": "green",
       "notes": "Unmodified Jack Daniel's Old No. 7.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "green",
+        "counts": {
+          "red": 0,
+          "yellow": 0,
+          "green": 6
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-yt-clean.png",
@@ -259,8 +403,24 @@
       },
       "expectedRisk": "green",
       "notes": "Unmodified Yellowtail Cabernet.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "green",
+        "counts": {
+          "red": 0,
+          "yellow": 0,
+          "green": 6
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-sa-clean.png",
@@ -285,8 +445,24 @@
       },
       "expectedRisk": "green",
       "notes": "Unmodified Samuel Adams Boston Lager.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "green",
+        "counts": {
+          "red": 0,
+          "yellow": 0,
+          "green": 6
+        },
+        "overallConfidence": 94,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-jd-warning-titlecase.png",
@@ -311,8 +487,24 @@
       },
       "expectedRisk": "red",
       "notes": "Government Warning edited to title case.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "red",
+        "counts": {
+          "red": 1,
+          "yellow": 0,
+          "green": 5
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "red",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-jd-warning-missing.png",
@@ -337,8 +529,24 @@
       },
       "expectedRisk": "red",
       "notes": "Government Warning removed entirely — Tier 1 anchor red flag.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "red",
+        "counts": {
+          "red": 1,
+          "yellow": 0,
+          "green": 5
+        },
+        "overallConfidence": 79,
+        "fieldRisks": {
+          "governmentWarning": "red",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-jd-abv-mismatch.png",
@@ -363,8 +571,24 @@
       },
       "expectedRisk": "red",
       "notes": "ABV edited to 47% vs application 40% — beyond tolerance.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "red",
+        "counts": {
+          "red": 1,
+          "yellow": 0,
+          "green": 5
+        },
+        "overallConfidence": 94,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "red",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-jd-abv-tolerance.png",
@@ -389,8 +613,24 @@
       },
       "expectedRisk": "yellow",
       "notes": "ABV edited to 45.2% vs application 45% — within ±0.3, not exact: yellow.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "yellow",
+        "counts": {
+          "red": 0,
+          "yellow": 1,
+          "green": 5
+        },
+        "overallConfidence": 94,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "yellow",
+          "brandName": "green",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-jd-brand-nearmatch.png",
@@ -415,8 +655,24 @@
       },
       "expectedRisk": "yellow",
       "notes": "Brand edited to JACK DANIELS (no apostrophe) — near-match yellow.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "yellow",
+        "counts": {
+          "red": 0,
+          "yellow": 1,
+          "green": 5
+        },
+        "overallConfidence": 95,
+        "fieldRisks": {
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "yellow",
+          "classType": "green",
+          "netContents": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     },
     {
       "filename": "label-jd-missing-netcontents.png",
@@ -441,8 +697,30 @@
       },
       "expectedRisk": "red",
       "notes": "Net contents removed — required field red flag.",
-      "actualResult": null,
-      "passFail": null
+      "actualResult": {
+        "overall": "red",
+        "counts": {
+          "red": 1,
+          "yellow": 0,
+          "green": 5
+        },
+        "overallConfidence": 79,
+        "fieldRisks": {
+          "netContents": "red",
+          "governmentWarning": "green",
+          "abv": "green",
+          "brandName": "green",
+          "classType": "green",
+          "producer": "green"
+        }
+      },
+      "passFail": "PASS"
     }
-  ]
+  ],
+  "testRun": {
+    "date": "2026-06-11",
+    "environment": "Node.js + Tesseract.js (zone-cropped, same engine and validator as browser)",
+    "passed": 17,
+    "total": 17
+  }
 }

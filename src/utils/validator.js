@@ -213,23 +213,33 @@ export function validateLabel({ extraction, application, beverageType }, onResul
     }
   }
 
-  // Brand name fuzzy match.
+  // Brand name fuzzy match. Brand zones legitimately contain secondary
+  // lines ("Old No. 7 Brand", vintage years), so score each extracted line
+  // and use the best match rather than penalizing the whole zone.
   if (brandZoneText && application.brandName) {
-    const sim = similarity(brandZoneText, application.brandName);
+    const lines = (fields.brandName?.rawText || '').split('\n')
+      .map((l) => normalizeWhitespace(l)).filter(Boolean);
+    let best = { sim: -1, line: brandZoneText };
+    for (const line of lines.length ? lines : [brandZoneText]) {
+      const s2 = similarity(line, application.brandName);
+      if (s2 > best.sim) best = { sim: s2, line };
+    }
+    const sim = best.sim;
+    const matchedLine = best.line;
     const detail = {
       rawText: brandZoneText, expected: application.brandName, similarity: sim,
-      diff: charDiff(brandZoneText, application.brandName),
+      diff: charDiff(matchedLine, application.brandName),
       zone: 'brandName', confidence: fields.brandName?.confidence ?? 0
     };
     if (sim >= FUZZY_THRESHOLDS.green) {
       push(result('brandName', RISK.GREEN,
         'Brand name on the label matches the application.',
-        { checkId: 'fuzzy', labelValue: brandZoneText,
+        { checkId: 'fuzzy', labelValue: matchedLine,
           applicationValue: application.brandName, detail }));
     } else if (sim >= FUZZY_THRESHOLDS.yellow) {
       push(result('brandName', RISK.YELLOW,
         `Brand name is close but not identical (${sim}% similar). Please check punctuation and spelling.`,
-        { checkId: 'fuzzy', labelValue: brandZoneText,
+        { checkId: 'fuzzy', labelValue: matchedLine,
           applicationValue: application.brandName, detail }));
     } else {
       push(result('brandName', RISK.RED,

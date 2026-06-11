@@ -10,14 +10,14 @@
       "beverageType": "distilled_spirits",
       "subcategory": "tennessee_whiskey",
       "colorProfile": [
-        "#1a1a1a",
-        "#f5f0e8",
-        "#8b6914",
-        "#000000",
-        "#d4c9a8"
+        "#e0e0e0",
+        "#e0e0c0",
+        "#a0a0a0",
+        "#ffffe0",
+        "#ffe0e0"
       ],
       "aspectRatio": 0.45,
-      "layoutDensity": 0.42,
+      "layoutDensity": 0,
       "confidenceScore": 87,
       "zones": {
         "brandName": {
@@ -376,14 +376,14 @@
       "beverageType": "wine",
       "subcategory": "cabernet_sauvignon",
       "colorProfile": [
-        "#1a1a1a",
-        "#f2c500",
-        "#ffffff",
-        "#7a1f3d",
-        "#3a3a3a"
+        "#ffe0e0",
+        "#e0e0e0",
+        "#e0e0c0",
+        "#404040",
+        "#202020"
       ],
       "aspectRatio": 0.85,
-      "layoutDensity": 0.3,
+      "layoutDensity": 0.2,
       "confidenceScore": 84,
       "zones": {
         "brandName": {
@@ -803,14 +803,14 @@
       "beverageType": "beer",
       "subcategory": "amber_lager",
       "colorProfile": [
-        "#003b70",
-        "#f5efe0",
-        "#c8102e",
-        "#d4af37",
-        "#1a1a1a"
+        "#e0e0e0",
+        "#ffe0e0",
+        "#206080",
+        "#204060",
+        "#e0c0c0"
       ],
       "aspectRatio": 1.1,
-      "layoutDensity": 0.4,
+      "layoutDensity": 0.28,
       "confidenceScore": 85,
       "zones": {
         "brandName": {
