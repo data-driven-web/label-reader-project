@@ -20,7 +20,7 @@ const STATUS_LABEL = {
   processing: 'Processing…', error: 'Could not read'
 };
 
-export default function BatchTable({ rows, onApproveAllGreen, onRowAction }) {
+export default function BatchTable({ rows, onApproveAllGreen, onRowAction, onSaveResults, saveNotice }) {
   const [expanded, setExpanded] = useState(null);
   if (!rows.length) return null;
   const sorted = [...rows].sort((a, b) =>
@@ -38,10 +38,15 @@ export default function BatchTable({ rows, onApproveAllGreen, onRowAction }) {
         <h2 className="text-lg font-semibold text-navy-700">
           Batch results — {finished.length} of {rows.length} complete
         </h2>
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center flex-wrap">
+          {saveNotice && <span className="text-sm text-navy-700">{saveNotice}</span>}
           <button onClick={onApproveAllGreen}
             className="min-h-[44px] px-5 bg-green-600 text-white text-base font-semibold rounded hover:bg-green-700">
             Approve All Green
+          </button>
+          <button onClick={() => onSaveResults(rows.filter((r) => r.overall !== 'processing'))}
+            className="min-h-[44px] px-5 bg-navy-700 text-white text-base font-semibold rounded hover:bg-navy-800">
+            Save Results
           </button>
           <button onClick={exportCsv}
             className="min-h-[44px] px-5 border-2 border-navy-700 text-navy-700 text-base font-semibold rounded hover:bg-navy-50">
@@ -53,7 +58,7 @@ export default function BatchTable({ rows, onApproveAllGreen, onRowAction }) {
         <table className="w-full text-base">
           <thead className="bg-navy-50 text-navy-800">
             <tr>
-              {['Filename', 'Brand identified', 'Status', 'Red', 'Yellow', 'Green', 'Action', 'Time'].map((h) => (
+              {['Label', 'Filename', 'Brand identified', 'Status', 'Red', 'Yellow', 'Green', 'Action', 'Time'].map((h) => (
                 <th key={h} className="text-left px-3 py-3 font-semibold whitespace-nowrap">{h}</th>
               ))}
             </tr>
@@ -77,6 +82,14 @@ function RowGroup({ row, expanded, onToggle, onRowAction }) {
     <>
       <tr onClick={onToggle}
         className="border-t border-gray-200 cursor-pointer hover:bg-gray-50">
+        <td className="px-3 py-2">
+          {row.previewUrl ? (
+            <img src={row.previewUrl} alt={`Label ${row.filename}`}
+              className="w-12 h-12 object-contain border border-gray-200 rounded bg-white" />
+          ) : (
+            <div className="w-12 h-12 border border-gray-200 rounded bg-gray-50" aria-hidden="true" />
+          )}
+        </td>
         <td className="px-3 py-3 font-medium text-navy-800">{row.filename}</td>
         <td className="px-3 py-3">{row.brandIdentified || 'Unknown'}</td>
         <td className="px-3 py-3">
@@ -92,14 +105,27 @@ function RowGroup({ row, expanded, onToggle, onRowAction }) {
       </tr>
       {expanded && row.results && (
         <tr className="border-t border-gray-100 bg-gray-50">
-          <td colSpan={8} className="px-4 py-4">
+          <td colSpan={9} className="px-4 py-4">
             {row.error ? (
               <p className="text-base text-red-800">{row.error}</p>
             ) : (
-              <ResultsPanel
-                results={row.results} complete brandMatch={row.brandMatch}
-                unknownBrand={!row.brandMatch} action={row.action}
-                onAction={(a) => onRowAction(row, a)} />
+              <div className="grid lg:grid-cols-[280px_1fr] gap-5">
+                {/* Label preview beside the findings so the agent can
+                    confirm an issue or approval by eye, as in single mode. */}
+                <div>
+                  <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-2">Label preview</p>
+                  {row.previewUrl ? (
+                    <img src={row.previewUrl} alt={`Label ${row.filename}`}
+                      className="max-w-full max-h-96 object-contain border border-gray-200 rounded bg-white shadow-sm" />
+                  ) : (
+                    <p className="text-sm text-gray-500">Preview not available</p>
+                  )}
+                </div>
+                <ResultsPanel
+                  results={row.results} complete brandMatch={row.brandMatch}
+                  unknownBrand={!row.brandMatch} action={row.action}
+                  onAction={(a) => onRowAction(row, a)} />
+              </div>
             )}
           </td>
         </tr>

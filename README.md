@@ -66,6 +66,8 @@ The TTB public COLA registry contains **over 2 million approved label records** 
 | Learning indicator | Program manager | Demonstrate the system improves with use | Session counter + Learning Dashboard backed by localStorage logs |
 | Specific error messages | Help desk | Generic errors generate support tickets | Every error names what happened and the exact next step |
 | Works offline / restricted networks | TTB IT | Federal network constraints | Self-hosted OCR assets, zero runtime external requests |
+| Saved Results with version tracking | Reviewing agents | Track labels across re-submissions; a corrected label should re-classify automatically | localStorage record per filename with SHA-256 artwork hash; re-analysis re-scores and moves the record between Approved / Review / Needs Action with version history |
+| Batch label preview | Reviewing agents | Confirm flagged issues by eye without leaving the batch table | Thumbnail column plus full label preview in the expanded row detail view |
 
 *(Stakeholder names beyond the discovery-session example are role-based placeholders.)*
 

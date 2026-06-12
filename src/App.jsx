@@ -30,6 +30,10 @@ import {
 import { TTB_CLASS_TYPES } from './constants/regulations.js';
 import { normalizeWhitespace, normalizeLoose } from './utils/fuzzyMatch.js';
 import referenceLabels from './data/referenceLabels.json';
+import SavedResults from './components/SavedResults.jsx';
+import {
+  fileHash, makeThumbnail, saveOrUpdateResult, autoUpdateIfSaved, getSavedResults
+} from './utils/resultsStore.js';
 
 /** Run Layers 0-1 on a file. PDFs are rasterized client-side first. */
 async function runPipeline(file, onStatus) {
@@ -83,6 +87,10 @@ export default function App() {
   const [status, setStatus] = useState('');
   const [busy, setBusy] = useState(false);
   const [dashboardOpen, setDashboardOpen] = useState(false);
+  const [savedOpen, setSavedOpen] = useState(false);
+  const [saveNotice, setSaveNotice] = useState(null);
+  const [singleSaved, setSingleSaved] = useState(false);
+  const batchFiles = useRef(new Map()); // filename -> File, for hashing on save
   const [refreshKey, setRefreshKey] = useState(0);
 
   // ---- single-label state ----
@@ -102,6 +110,7 @@ export default function App() {
   const batchRunning = useRef(false);
 
   const resetSingle = () => {
+    setSingleSaved(false);
     setClassification(null); setExtraction(null); setResults([]);
     setValidation(null); setAction(null); setAutoFilled(new Set());
   };
@@ -155,6 +164,7 @@ export default function App() {
 
   function handleAction(a) {
     setAction(a);
+    setSingleSaved(false); // decision changed — allow re-saving with it
     if (a === 'approved' && validation && classification) {
       // Confidence feedback loop: log every approved yellow flag.
       for (const r of validation.results.filter((x) => x.risk === 'yellow')) {
@@ -204,9 +214,13 @@ export default function App() {
     batchRunning.current = true;
     warmUpOcr();
     const startedAt = Date.now();
+    // Release previous batch preview URLs, keep file refs for save/hash.
+    for (const r of rows) if (r.previewUrl) URL.revokeObjectURL(r.previewUrl);
+    batchFiles.current = new Map(files.map((f) => [f.name, f]));
     setRows(files.map((f) => ({
       filename: f.name, overall: 'processing', startedAt, brandIdentified: null,
-      counts: null, action: null, timestamp: null, results: null, brandMatch: null
+      counts: null, action: null, timestamp: null, results: null, brandMatch: null,
+      previewUrl: f.type === 'application/pdf' ? null : URL.createObjectURL(f)
     })));
     const update = (name, patch) => setRows((prev) =>
       prev.map((r) => (r.filename === name ? { ...r, ...patch } : r)));
@@ -226,6 +240,15 @@ export default function App() {
           brandMatch: cls.brandMatch, brandIdentified: cls.brandMatch?.brandName,
           timestamp: new Date().toISOString()
         });
+        // If this label was saved in a previous session, refresh its record
+        // so a fixed version moves to the right section automatically.
+        try {
+          const hash = await fileHash(f);
+          autoUpdateIfSaved({
+            filename: f.name, hash, overall: v.overall, counts: v.counts,
+            brandIdentified: cls.brandMatch?.brandName
+          });
+        } catch { /* hashing unavailable — record still updates on Save */ }
       } catch (e) {
         update(f.name, {
           overall: 'error', timestamp: new Date().toISOString(),
@@ -261,7 +284,43 @@ export default function App() {
     setRefreshKey((k) => k + 1);
   }
 
+  async function saveBatchResults(finishedRows) {
+    let n = 0;
+    for (const row of finishedRows) {
+      if (!row.counts) continue;
+      const f = batchFiles.current.get(row.filename);
+      let hash = null, thumb = null;
+      if (f) {
+        try { hash = await fileHash(f); } catch { /* optional */ }
+        if (f.type !== 'application/pdf') thumb = await makeThumbnail(f);
+      }
+      saveOrUpdateResult({
+        filename: row.filename, hash, thumb, overall: row.overall,
+        counts: row.counts, action: row.action, brandIdentified: row.brandIdentified
+      });
+      n += 1;
+    }
+    setSaveNotice(`${n} result${n === 1 ? '' : 's'} saved`);
+    setRefreshKey((k) => k + 1);
+    setTimeout(() => setSaveNotice(null), 4000);
+  }
+
+  async function saveSingleResult() {
+    if (!file || !validation) return;
+    let hash = null, thumb = null;
+    try { hash = await fileHash(file); } catch { /* optional */ }
+    if (file.type !== 'application/pdf') thumb = await makeThumbnail(file);
+    saveOrUpdateResult({
+      filename: file.name, hash, thumb, overall: validation.overall,
+      counts: validation.counts, action,
+      brandIdentified: classification?.brandMatch?.brandName
+    });
+    setSingleSaved(true);
+    setRefreshKey((k) => k + 1);
+  }
+
   const session = getSessionStats();
+  const savedCount = getSavedResults().length;
 
   return (
     <div className="min-h-screen bg-white">
@@ -272,10 +331,16 @@ export default function App() {
             <p className="text-sm text-navy-100">Alcohol and Tobacco Tax and Trade Bureau — Label Review Prototype</p>
             <p className="text-xs text-navy-100/70 mt-0.5">Oscar Hernandez — Treasury Assessment</p>
           </div>
-          <button onClick={() => setDashboardOpen(true)}
-            className="min-h-[44px] px-4 border border-navy-100/40 rounded text-base hover:bg-navy-600">
-            Learning: {session.overridesLogged + session.templatesUpdated} updates this session
-          </button>
+          <div className="flex gap-3">
+            <button onClick={() => setSavedOpen(true)}
+              className="min-h-[44px] px-4 border border-navy-100/40 rounded text-base hover:bg-navy-600">
+              Saved Results ({savedCount})
+            </button>
+            <button onClick={() => setDashboardOpen(true)}
+              className="min-h-[44px] px-4 border border-navy-100/40 rounded text-base hover:bg-navy-600">
+              Learning: {session.overridesLogged + session.templatesUpdated} updates this session
+            </button>
+          </div>
         </div>
       </header>
 
@@ -385,7 +450,15 @@ export default function App() {
 
         {mode === 'single' && results.length > 0 && (
           <div className="mt-6">
-            <h2 className="text-lg font-semibold text-navy-700 mb-3">Verification results</h2>
+            <div className="flex items-center justify-between mb-3 flex-wrap gap-3">
+              <h2 className="text-lg font-semibold text-navy-700">Verification results</h2>
+              {validation && (
+                <button onClick={saveSingleResult} disabled={singleSaved}
+                  className="min-h-[44px] px-5 bg-navy-700 text-white text-base font-semibold rounded hover:bg-navy-800 disabled:opacity-60">
+                  {singleSaved ? 'Result saved' : 'Save Result'}
+                </button>
+              )}
+            </div>
             <ResultsPanel
               results={results} complete={Boolean(validation)}
               brandMatch={classification?.brandMatch}
@@ -396,7 +469,8 @@ export default function App() {
         )}
 
         {mode === 'batch' && (
-          <BatchTable rows={rows} onApproveAllGreen={approveAllGreen} onRowAction={rowAction} />
+          <BatchTable rows={rows} onApproveAllGreen={approveAllGreen}
+            onRowAction={rowAction} onSaveResults={saveBatchResults} saveNotice={saveNotice} />
         )}
       </main>
 
@@ -405,6 +479,7 @@ export default function App() {
       </footer>
 
       <LearningDashboard open={dashboardOpen} onClose={() => setDashboardOpen(false)} refreshKey={refreshKey} />
+      <SavedResults open={savedOpen} onClose={() => setSavedOpen(false)} refreshKey={refreshKey} />
     </div>
   );
 }
