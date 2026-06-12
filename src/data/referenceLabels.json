@@ -718,7 +718,7 @@
     }
   ],
   "testRun": {
-    "date": "2026-06-11",
+    "date": "2026-06-12",
     "environment": "Node.js + Tesseract.js (zone-cropped, same engine and validator as browser)",
     "passed": 17,
     "total": 17

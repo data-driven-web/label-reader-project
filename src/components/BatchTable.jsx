@@ -73,6 +73,10 @@ export default function BatchTable({ rows, onApproveAllGreen, onRowAction, onSav
           </tbody>
         </table>
       </div>
+      <p className="text-sm text-gray-500 mt-2">
+        "Unknown" means the brand is not yet in the template library, so the standard
+        zone layout was used for reading. All fields are still fully validated.
+      </p>
     </section>
   );
 }
@@ -91,7 +95,14 @@ function RowGroup({ row, expanded, onToggle, onRowAction }) {
           )}
         </td>
         <td className="px-3 py-3 font-medium text-navy-800">{row.filename}</td>
-        <td className="px-3 py-3">{row.brandIdentified || 'Unknown'}</td>
+        <td className="px-3 py-3">
+          {row.brandIdentified || (
+            <span className="text-gray-500 border-b border-dotted border-gray-400 cursor-help"
+              title="This brand is not yet in the template library, so the standard full-label zone layout was used. Validation is unaffected — every field is still checked against the application.">
+              Unknown
+            </span>
+          )}
+        </td>
         <td className="px-3 py-3">
           <span className={`inline-block border-l-4 px-2 py-1 rounded-r text-sm font-semibold ${STATUS_BADGE[row.overall]}`}>
             {STATUS_LABEL[row.overall]}

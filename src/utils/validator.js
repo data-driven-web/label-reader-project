@@ -125,9 +125,13 @@ export function validateLabel({ extraction, application, beverageType }, onResul
   const producerZoneText = normalizeWhitespace(fields.producer?.rawText || '');
   if (!producerFound) {
     if (!producerZoneText) {
+      // Spec Tier 1: producer anchor not found -> yellow for agent review
+      // (unlike other required fields). A label whose producer line could
+      // not be read should route to a human, not be auto-rejected — the
+      // statement may be present but degraded, curved, or in small print.
       missing.add('producer');
-      push(result('producer', RISK.RED,
-        'No producer statement was found on this label. This is a required field.',
+      push(result('producer', RISK.YELLOW,
+        'No producer statement (such as "Bottled by" or "Distilled by") could be read from this label. Please check it by eye.',
         { tier: 1, checkId: 'anchor', applicationValue: application.producer || '' }));
     } else {
       // Text exists in the producer zone but no standard anchor phrase —
@@ -308,7 +312,7 @@ export function validateLabel({ extraction, application, beverageType }, onResul
     const conf = Math.round(f.confidence ?? 0);
     const critical = required.includes(fieldName);
     if (conf < 40 && critical && f.rawText) {
-      push(result(fieldName, RISK.RED,
+      push(result(fieldName, RISK.YELLOW,
         `This part of the label is very hard to read (${conf}% reading confidence). Please verify it by eye or upload a clearer photo.`,
         { checkId: 'confidence', labelValue: normalizeWhitespace(f.rawText),
           detail: { rawText: f.rawText, confidence: conf, zone: f.zone } }));

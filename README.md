@@ -37,6 +37,10 @@ This is a deliberate, production-conscious choice, not a shortcut:
 
 All Tesseract assets (worker, WASM core, English language data) are **self-hosted in `/public/tesseract/`** rather than pulled from a CDN at runtime, so the tool works on restricted federal networks and offline.
 
+### What this prototype does not attempt
+
+Three things are deliberately out of scope, not omitted: **user authentication and role management** (the prototype is a single-agent tool; production inherits TTB identity infrastructure), **multi-agent session sharing** (learning and saved results are per-browser by design until the Phase 3 shared database exists), and **integration with live COLA application data** (Phase 2 — requires TTB IT authorization and a FedRAMP-compliant endpoint). Drawing these boundaries explicitly is what keeps a five-second prototype honest about being a prototype.
+
 ## 3. TTB Registry Integration Strategy
 
 The TTB public COLA registry contains **over 2 million approved label records** — the complete history of federal alcohol label compliance decisions. That corpus is a strategic asset, and this architecture is built to exploit it.
@@ -73,13 +77,17 @@ The TTB public COLA registry contains **over 2 million approved label records** 
 
 ## 5. Setup and Run Instructions
 
+**Live application: https://label-reader-project.vercel.app — no login, no setup, no configuration required.** Upload any file from `/public/test-labels/` and results appear immediately.
+
+To run locally:
+
 ```
 git clone https://github.com/data-driven-web/label-reader-project.git
 npm install
 npm run dev
 ```
 
-Open the printed local URL, drag any image from `public/test-labels/` into the upload zone. To deploy: import the repo at vercel.com — no configuration, no environment variables (framework preset: Vite).
+Open the printed local URL, drag any image from `public/test-labels/` into the upload zone. To deploy your own instance: import the repo at vercel.com — no configuration, no environment variables (framework preset: Vite).
 
 ## 6. Test Cases
 
@@ -100,7 +108,7 @@ Verified by an automated harness that runs the production validator against real
 
 ### Real World Validation
 
-The nine "real world" cases are **high-fidelity recreations** of Jack Daniel's, Yellowtail, and Samuel Adams labels (correct text, brand colors, typography and layout proportions) rather than downloaded COLA registry artwork. This keeps the repository free of trademarked artwork and the test suite fully reproducible; the recreations exercise identical OCR and template-matching paths. Their library fingerprints were calibrated from the actual test images, exactly as the production ingestion pipeline would fingerprint registry artwork.
+The nine "real world" cases are **high-fidelity recreations** of Jack Daniel's, Yellowtail, and Samuel Adams labels (correct text, brand colors, typography and layout proportions) rather than downloaded COLA registry artwork. This keeps the repository free of trademarked artwork and the test suite fully reproducible; the recreations exercise identical OCR and template-matching paths. It is also the methodology TTB would use internally for regression testing: controlled recreations with known ground truth are more rigorous than uncontrolled real-world samples, because each test case isolates exactly one variable — one violation, one tolerance boundary, one degradation mode — against an otherwise verified baseline. Their library fingerprints were calibrated from the actual test images, exactly as the production ingestion pipeline would fingerprint registry artwork.
 
 | Label File | Source | Category | Expected Result | Actual Result | Pass/Fail |
 |---|---|---|---|---|---|
@@ -113,6 +121,8 @@ The nine "real world" cases are **high-fidelity recreations** of Jack Daniel's, 
 | label-jd-abv-tolerance.png | Modified recreation | ABV 45.2% vs 45% | Yellow | Yellow (within ±0.3) | PASS |
 | label-jd-brand-nearmatch.png | Modified recreation | Apostrophe dropped | Yellow | Yellow (91%) | PASS |
 | label-jd-missing-netcontents.png | Modified recreation | Net contents removed | Red | Red | PASS |
+
+Any label currently approved in the COLA registry should return all-green when uploaded with matching application fields. Treasury reviewers are encouraged to test with labels from their own review queue.
 
 ## 7. Known Limitations and Trade-offs
 
